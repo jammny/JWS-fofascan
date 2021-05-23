@@ -2,6 +2,10 @@
 fofa采集脚本
 
 # 用法
+pip3 install -r requriement.txt
+
+python3 JWS_fofascan.py
+
 脚本运行：
 ![截图](https://github.com/jammny/JWS-fofascan/blob/main/result/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE.jpg)
 
