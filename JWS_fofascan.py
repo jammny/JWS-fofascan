@@ -24,9 +24,9 @@ class JWSfofa:
             r = requests.get(url=url, headers=self.headers, timeout=10)
             if r.status_code == 200 and '"isvip":true' in r.text:
                 print (Fore.BLUE + ">>>>身份认证成功！你好，{}".format(r.json()["username"]))
+                self.select_info()
             else:
                 print (Fore.RED + ">>>>身份认证失败！请绑定信息！")
-
         except requests.exceptions.ConnectionError:
             print (Fore.RED + ">>>>连接失败！")
 
@@ -71,7 +71,7 @@ class JWSfofa:
 
     # 数据写入csv
     def write_csv(self, tables_list, keyworld):
-        name = ['域名', 'IP', '端口', '标题', '服务器']
+        name = ['域名', '标题', 'IP', '端口', '服务器']
         c = DataFrame(columns=name, data=tables_list)
         name = self.file_name(keyworld)
         c.to_csv('result/{}.csv'.format(name))
@@ -80,7 +80,6 @@ class JWSfofa:
     # 程序入口：
     def run(self):
         self.check_info()
-        self.select_info()
 
 if __name__ == "__main__":
     init(autoreset=True)
@@ -92,7 +91,7 @@ if __name__ == "__main__":
  | |__| |  \  /\  /  ____) |     | || (_) | || (_| \__ \ (_| (_| | | | |
   \____/    \/  \/  |_____/      |_| \___/|_| \__,_|___/\___\__,_|_| |_|
                                                                         
-                                                                        ——by jammny.2021.10    
+                                                                        ——by jammny.2021.5.10    
     ''')
     fofa = JWSfofa()
     fofa.run()
